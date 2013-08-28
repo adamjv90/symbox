@@ -19,6 +19,8 @@ fi
 curl $SOURCE > $TARGET
 unzip $TARGET > /dev/null
 rm $TMPDIR/.gitignore
+mv $TMPDIR/LICENSE.md $TMPDIR/symbox/
+mv $TMPDIR/README.md $TMPDIR/symbox/
 mv $TMPDIR/* ./
 rm -rf $TMPDIR $TARGET
 

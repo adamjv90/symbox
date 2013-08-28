@@ -6,9 +6,14 @@ symbox
 Installation
 ------------
 
+ * Edit "web/app_dev.php" and "192.168.10.1" to the array of allowed IPs within the "if"- condition
+ * Do the same for "web/config.php" if you use this file
+ * Open up a terminal and install symbox:
+
     ~$ curl https://raw.github.com/sweikenb/symbox/master/installer.sh | sh
     ~$ vagrant up
     ~$ vagrant ssh
+
 
 Accessing the VM
 ----------------
