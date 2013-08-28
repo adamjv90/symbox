@@ -158,6 +158,7 @@ puphpet::ini { 'xdebug':
     'xdebug.remote_enable = 1',
     'xdebug.remote_handler = "dbgp"',
     'xdebug.remote_port = 9000',
+    'xdebug.max_nesting_level = 500',
     'xdebug.auto_trace = 0'
   ],
   ini     => '/etc/php5/conf.d/zzz_xdebug.ini',
@@ -176,6 +177,7 @@ puphpet::ini { 'php':
 
 puphpet::ini { 'custom':
   value   => [
+    'short_open_tag = Off',
     'display_errors = On',
     'error_reporting = -1',
     'allow_url_fopen = 1'
