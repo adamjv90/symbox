@@ -29,12 +29,22 @@ if [ -f "./Vagrantfile" ]
     mv "./Vagrantfile" "$BAKUP_NAME"
 fi
 
+# download current master and unzip
 curl $SOURCE > $TARGET
 unzip $TARGET > /dev/null
+
+# remove symbox git-irgnore to prevent collisions
 rm $TMPDIR/.gitignore
+
+# move the symbox license and readme file
 mv $TMPDIR/LICENSE.md $TMPDIR/symbox/
 mv $TMPDIR/README.md $TMPDIR/symbox/
+
+# move symbox file to theinstallation target
 mv $TMPDIR/* ./
+
+# cleanup
 rm -rf $TMPDIR $TARGET
 
+# done
 echo; echo "[symbox] -> Installation done"; echo;
