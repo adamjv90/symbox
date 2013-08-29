@@ -16,6 +16,19 @@ if [ -z `which unzip` ]
     exit 1
 fi
 
+if [ -d "./symbox" ]
+    then
+    echo; echo "[symbox] -> Existing installation found, stopping. Run the update.sh-script to apply updates."; echo;
+    exit 1
+fi
+
+if [ -f "./Vagrantfile" ]
+    then
+    BAKUP_NAME="Vagrantfile_"`eval date +%Y%m%d`".bak"
+    echo; echo "[symbox] -> Existing Vagrantfile found, creating backup: Vagrantfile -> $BAKUP_NAME"; echo;
+    mv "./Vagrantfile" "$BAKUP_NAME"
+fi
+
 curl $SOURCE > $TARGET
 unzip $TARGET > /dev/null
 rm $TMPDIR/.gitignore
