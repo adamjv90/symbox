@@ -13,7 +13,7 @@ Installation
 
 Open up a terminal and run the install script:
 
-    ~$ curl https://raw.github.com/sweikenb/symbox/master/installer.sh | sh
+    ~$ curl https://raw.github.com/basecom/symbox/master/installer.sh | sh
     ~$ vagrant up
     ~$ vagrant ssh
 
@@ -23,7 +23,7 @@ Update
 
 Open up a terminal and run the update script:
 
-    ~$ curl https://raw.github.com/sweikenb/symbox/master/update.sh | sh
+    ~$ curl https://raw.github.com/basecom/symbox/master/update.sh | sh
     ~$ vagrant reload
     ~$ vagrant ssh
 

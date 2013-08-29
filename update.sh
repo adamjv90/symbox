@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SOURCE="https://codeload.github.com/sweikenb/symbox/zip/master"
+SOURCE="https://codeload.github.com/basecom/symbox/zip/master"
 TARGET="./master.zip"
 TMPDIR="./symbox-master"
 
