@@ -2,31 +2,65 @@
 
 namespace basecom\symbox;
 
-use Composer\Script\Event;
-
 class ComposerCallback
 {
-    public static function postPackageInstall(Event $event)
+    protected function copy($src, $dest)
     {
-        $sourceDir = \realpath(__DIR__);
-        $targetDir = \realpath(\sprintf("%s/../../../", $sourceDir));
+        if(\is_file($src)) {
+            if(\file_exists($dest)) {
+                \rename($dest, $dest.'.bak');
+            }
+            return \copy($src, $dest);
+        }
 
-        // TODO: fill me
+        foreach(\scandir($src) as $file)
+        {
+            $tmpSrc = $src.'/'.$file;
+            $tmpDest = $dest.'/'.$file;
+
+            if(!\is_readable($tmpSrc) || \in_array($file, array('.', '..'))) {
+                continue;
+            }
+
+            if(\is_dir($tmpSrc)) {
+                if(!\is_dir($tmpDest)) {
+                    \mkdir($tmpDest, 755, true);
+                }
+                return self::copy($tmpSrc, $tmpDest);
+            }
+            else {
+                if(\file_exists($tmpDest)) {
+                    \rename($tmpDest, $tmpDest.'.bak');
+                }
+                return \copy($tmpSrc, $tmpDest);
+            }
+        }
+
+        return false;
     }
 
-    public static function postPackageUpdate(Event $event)
+    public static function install()
     {
         $sourceDir = \realpath(__DIR__);
         $targetDir = \realpath(\sprintf("%s/../../../", $sourceDir));
 
-        // TODO: fill me
+        self::copy($sourceDir.'/symbox', $targetDir.'/symbox');
+        self::copy($sourceDir.'/Vagrantfile', $targetDir.'/Vagrantfile');
     }
 
-    public static function prePackageUninstall(Event $event)
+    public static function remove()
     {
-        $sourceDir = \realpath(__DIR__);
-        $targetDir = \realpath(\sprintf("%s/../../../", $sourceDir));
+        // define target path
+        $targetDir = \realpath(\sprintf("%s/../../../", __DIR__));
 
-        // TODO: fill me
+        // remove source folder
+        if(\file_exists($targetDir . '/symbox')) {
+            \rmdir($targetDir . '/symbox');
+        }
+
+        // remove vagrant file
+        if(\file_exists($targetDir . '/Vagrantfile')) {
+            \unlink($targetDir . '/Vagrantfile');
+        }
     }
 }
