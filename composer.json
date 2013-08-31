@@ -19,7 +19,7 @@
     "autoload": {
         "psr-0": { "basecom\\symbox": "" }
     },
-    "target-dir": "basecom/symbox",
+    "target-dir": "",
     "scripts": {
         "post-package-install":  "basecom\\symbox\\ComposerCallback::install",
         "post-package-update":   "basecom\\symbox\\ComposerCallback::install",
