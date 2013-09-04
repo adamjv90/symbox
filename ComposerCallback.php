@@ -4,7 +4,7 @@ namespace basecom\symbox;
 
 class ComposerCallback
 {
-    protected function copy($src, $dest)
+    protected static function copy($src, $dest)
     {
         if(\is_file($src)) {
             if(\file_exists($dest)) {
@@ -41,6 +41,8 @@ class ComposerCallback
 
     public static function install()
     {
+        echo "\nsymbox install triggerd\n";
+
         $sourceDir = \realpath(__DIR__);
         $targetDir = \realpath(\sprintf("%s/../../../", $sourceDir));
 
@@ -50,17 +52,14 @@ class ComposerCallback
 
     public static function remove()
     {
+        echo "\nsymbox remove triggerd\n";
+
         // define target path
         $targetDir = \realpath(\sprintf("%s/../../../", __DIR__));
 
         // remove source folder
         if(\file_exists($targetDir . '/symbox')) {
             \rmdir($targetDir . '/symbox');
-        }
-
-        // remove vagrant file
-        if(\file_exists($targetDir . '/Vagrantfile')) {
-            \unlink($targetDir . '/Vagrantfile');
         }
     }
 }
