@@ -2,9 +2,11 @@
 
 namespace basecom\symbox;
 
+use Composer\Script\CommandEvent;
+
 class ComposerCallback
 {
-    public static function install()
+    public static function install(CommandEvent $event)
     {
         // get the source and target dir
         $sourceDir = \realpath(__DIR__);
@@ -21,8 +23,8 @@ class ComposerCallback
         \copy($sourceDir.'/Vagrantfile', $targetDir.'/Vagrantfile');
     }
 
-    public static function update()
+    public static function update(CommandEvent $event)
     {
-        self::install();
+        self::install($event);
     }
 }
