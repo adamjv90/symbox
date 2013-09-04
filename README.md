@@ -24,7 +24,7 @@ Add the following dependency and script-callbacks to your main "composer.json"-f
 
     "require": {
         ... ,
-        "basecom/symbox": "1.*"
+        "basecom/symbox": ">=1.1,<2.0"
     },
     "scripts": {
         "post-install-cmd": [
