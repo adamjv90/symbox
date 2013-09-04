@@ -21,8 +21,14 @@
     },
     "target-dir": "",
     "scripts": {
-        "post-package-install":  "basecom\\symbox\\ComposerCallback::install",
-        "post-package-update":   "basecom\\symbox\\ComposerCallback::install",
-        "pre-package-uninstall": "basecom\\symbox\\ComposerCallback::remove"
+        "post-package-install": [
+            "basecom\\symbox\\ComposerCallback::install"
+        ],
+        "post-package-update": [
+            "basecom\\symbox\\ComposerCallback::install"
+        ],
+        "pre-package-uninstall": [
+            "basecom\\symbox\\ComposerCallback::remove"
+        ]
     }
 }
