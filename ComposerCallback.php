@@ -41,8 +41,6 @@ class ComposerCallback
 
     public static function install()
     {
-        echo "\nsymbox install triggerd\n";
-
         $sourceDir = \realpath(__DIR__);
         $targetDir = \realpath(\sprintf("%s/../../../", $sourceDir));
 
@@ -50,16 +48,8 @@ class ComposerCallback
         self::copy($sourceDir.'/Vagrantfile', $targetDir.'/Vagrantfile');
     }
 
-    public static function remove()
+    public static function update()
     {
-        echo "\nsymbox remove triggerd\n";
-
-        // define target path
-        $targetDir = \realpath(\sprintf("%s/../../../", __DIR__));
-
-        // remove source folder
-        if(\file_exists($targetDir . '/symbox')) {
-            \rmdir($targetDir . '/symbox');
-        }
+        self::install();
     }
 }
