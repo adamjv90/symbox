@@ -10,7 +10,7 @@ class ComposerCallback
     {
         // get the source and target dir
         $sourceDir = \realpath(__DIR__);
-        $targetDir = \realpath(\sprintf("%s/../../../", $sourceDir));
+        $targetDir = \realpath(\sprintf("%s/../../../../../../", $sourceDir));
 
         // install symlink
         $cmd = ('win' === \strtolower(\PHP_OS) ? "mklink %s/symbox %s/symbox" : "ln -s %s/symbox %s/symbox");
