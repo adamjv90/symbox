@@ -54,7 +54,7 @@ apache::vhost { 'symbox.dev':
   port          => '80',
   env_variables => [
 ],
-  priority      => '1',
+  priority      => '2',
 }
 
 class { 'php':
@@ -207,11 +207,11 @@ class { 'phpmyadmin':
   require => [Class['mysql::server'], Class['mysql::config'], Class['php']],
 }
 
-apache::vhost { 'phpmyadmin':
-  server_name => 'phpmyadmin',
+apache::vhost { 'phpmyadmin.symbox.dev':
+  server_name => 'phpmyadmin.symbox.dev',
   docroot     => '/usr/share/phpmyadmin',
   port        => 80,
-  priority    => '10',
+  priority    => '1',
   require     => Class['phpmyadmin'],
 }
 

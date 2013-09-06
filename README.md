@@ -31,7 +31,7 @@ Open up a terminal and run the update script:
 Accessing the VM
 ----------------
 
- * Edit the hosts file of your system (e.g. '/etc/hosts' on Mac OS X) and add: "192.168.10.10 symbox.dev"
+ * Edit the hosts file of your system (e.g. '/etc/hosts' on Mac OS X) and add: "192.168.10.10 symbox.dev phpmyadmin.symbox.dev"
  * Now you can access the VM with your browser: http://symbox.dev/
 
 
