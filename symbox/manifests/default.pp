@@ -159,7 +159,8 @@ puphpet::ini { 'xdebug':
     'xdebug.remote_handler = "dbgp"',
     'xdebug.remote_port = 9000',
     'xdebug.max_nesting_level = 500',
-    'xdebug.auto_trace = 0'
+    'xdebug.auto_trace = 0',
+    'xdebug.idekey = symbox'
   ],
   ini     => '/etc/php5/conf.d/zzz_xdebug.ini',
   notify  => Service['apache'],

@@ -1,0 +1,31 @@
+{
+    "name": "basecom/symbox",
+    "description": "Creates an default vagrant environment optimized for symfony2 using Puppet and VirtualBox.",
+    "keywords": ["vagrant", "puppet", "vm", "virtualbox", "environment"],
+    "minimum-stability": "stable",
+    "homepage": "https://github.com/basecom/symbox",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Schröer",
+            "email": "schroeer@basecom.de",
+            "homepage": "http://www.basecom.de/"
+        }
+    ],
+    "require": {
+        "symfony/symfony": ">=2.3,<2.4"
+    },
+    "autoload": {
+        "psr-0": { "basecom\\symbox": "" }
+    },
+    "target-dir": "basecom/symbox",
+    "scripts": {
+        "post-install-cmd": [
+            "basecom\\symbox\\ComposerCallback::install"
+        ],
+        "post-update-cmd": [
+            "basecom\\symbox\\ComposerCallback::update"
+        ]
+    }
+}
