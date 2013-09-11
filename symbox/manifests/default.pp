@@ -54,7 +54,7 @@ apache::vhost { 'symbox.dev':
   port          => '80',
   env_variables => [
 ],
-  priority      => '1',
+  priority      => '2',
 }
 
 class { 'php':
@@ -159,7 +159,8 @@ puphpet::ini { 'xdebug':
     'xdebug.remote_handler = "dbgp"',
     'xdebug.remote_port = 9000',
     'xdebug.max_nesting_level = 500',
-    'xdebug.auto_trace = 0'
+    'xdebug.auto_trace = 0',
+    'xdebug.idekey = symbox'
   ],
   ini     => '/etc/php5/conf.d/zzz_xdebug.ini',
   notify  => Service['apache'],
@@ -207,11 +208,11 @@ class { 'phpmyadmin':
   require => [Class['mysql::server'], Class['mysql::config'], Class['php']],
 }
 
-apache::vhost { 'phpmyadmin':
-  server_name => 'phpmyadmin',
+apache::vhost { 'phpmyadmin.symbox.dev':
+  server_name => 'phpmyadmin.symbox.dev',
   docroot     => '/usr/share/phpmyadmin',
   port        => 80,
-  priority    => '10',
+  priority    => '1',
   require     => Class['phpmyadmin'],
 }
 
