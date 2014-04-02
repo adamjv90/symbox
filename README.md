@@ -3,12 +3,7 @@ symbox
 
  * Optimized for symfony2 `>=2.3,<2.4`
  * Basic configuration generated with https://puphpet.com/
-
-***
-
-**[Changelog](./changelog.md)**
-
-***
+ * **[Changelog](./changelog.md)**
 
 
 Custom modifications
@@ -30,7 +25,7 @@ Add the following dependency and script-callbacks to your main "composer.json"-f
 
     "require": {
         ... ,
-        "basecom/symbox": ">=1.1,<2.0"
+        "basecom/symbox": ">=2.0,<3.0"
     },
     "scripts": {
         "post-install-cmd": [
