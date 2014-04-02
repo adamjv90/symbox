@@ -48,7 +48,7 @@ apache::module { 'rewrite': }
 apache::vhost { 'symbox.dev':
   server_name   => 'symbox.dev',
   serveraliases => [
-    '*.symbox.dev'
+    '*'
   ],
   docroot       => '/var/www/web',
   port          => '80',
@@ -96,52 +96,6 @@ php::pecl::module { 'intl':
   use_package => false,
 }
 
-#$xhprofPath = '/var/www/xhprof'
-#
-#php::pecl::module { 'xhprof':
-#  use_package     => false,
-#  preferred_state => 'beta',
-#}
-#
-#if !defined(Package['git-core']) {
-#  package { 'git-core' : }
-#}
-#
-#vcsrepo { $xhprofPath:
-#  ensure   => present,
-#  provider => git,
-#  source   => 'https://github.com/facebook/xhprof.git',
-#  require  => Package['git-core']
-#}
-#
-#file { "${xhprofPath}/xhprof_html":
-#  ensure  => 'directory',
-#  owner   => 'vagrant',
-#  group   => 'vagrant',
-#  mode    => '0775',
-#  require => Vcsrepo[$xhprofPath]
-#}
-#
-#composer::run { 'xhprof-composer-run':
-#  path    => $xhprofPath,
-#  require => [
-#    Class['composer'],
-#    File["${xhprofPath}/xhprof_html"]
-#  ]
-#}
-#
-#apache::vhost { 'xhprof':
-#  server_name => 'xhprof',
-#  docroot     => "${xhprofPath}/xhprof_html",
-#  port        => 80,
-#  priority    => '1',
-#  require     => [
-#    Php::Pecl::Module['xhprof'],
-#    File["${xhprofPath}/xhprof_html"]
-#  ]
-#}
-
-
 class { 'xdebug':
   service => 'apache',
 }
@@ -188,6 +142,15 @@ puphpet::ini { 'custom':
   require => Class['php'],
 }
 
+# crosslink the php.ini files, remove this statement if you don't want this
+file { '/etc/php5/apache2/php.ini':
+  ensure => 'link',
+  target => '/etc/php5/cli/php.ini',
+  notify  => Service['apache'],
+  require => [
+    Package['php5', 'php5-cli', 'apache']
+  ],
+}
 
 class { 'mysql::server':
   config_hash   => { 'root_password' => 'symbox' }
