@@ -1,8 +1,14 @@
 symbox
 ======
 
- * Optimized for symfony2 v2.3
+ * Optimized for symfony2 `>=2.3,<2.4`
  * Basic configuration generated with https://puphpet.com/
+
+***
+
+**[Changelog](./changelog.md)**
+
+***
 
 
 Custom modifications
