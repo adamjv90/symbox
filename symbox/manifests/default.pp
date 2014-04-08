@@ -179,3 +179,7 @@ apache::vhost { 'phpmyadmin.symbox.dev':
   require     => Class['phpmyadmin'],
 }
 
+exec { 'install phpunit':
+    command => "pear config-set auto_discover 1 && pear install pear.phpunit.de/PHPUnit",
+    require => Package['php-pear'],
+}
