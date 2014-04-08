@@ -1,3 +1,8 @@
+**2014-04-08 / v2.0.1**
+
+- PHPUnit added
+
+
 **2014-04-02 / v2.0.0**
 
 - Crosslink the `php.ini` files for `apache2` and `cli` SAPI (`/etc/php5/apache2/php.ini` now links to `/etc/php5/cli/php.ini`)
